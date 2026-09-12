@@ -46,3 +46,5 @@ jobs:
            context: .
            push: true
            tags: alekhh/github-actions-cicd:latest
+
+           
