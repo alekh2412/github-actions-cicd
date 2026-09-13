@@ -4,7 +4,7 @@ const app = express();
 
 app.get("/", (req, res) => {
     res.json({
-        message: "version 2 - Deployed with github actions !!!"
+        message: "version 3 - pull request ci test!"
     });
 });
 
