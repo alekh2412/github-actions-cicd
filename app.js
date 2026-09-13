@@ -4,7 +4,7 @@ const app = express();
 
 app.get("/", (req, res) => {
     res.json({
-        message: "Hello from GitHub Actions CI/CD!"
+        message: "version 2 - Deployed with github actions !!!"
     });
 });
 
