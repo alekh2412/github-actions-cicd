@@ -43,7 +43,23 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-           context: .
-           push: true
-           tags: alekhh/github-actions-cicd:latest
-           
+          context: .
+          push: true
+          tags: alekhh/github-actions-cicd:latest
+
+  deploy:
+    needs: [test, docker]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo docker pull alekhh/github-actions-cicd:latest
+            sudo docker stop github-actions-cicd || true
+            sudo docker rm github-actions-cicd || true
+            sudo docker run -d -p 3000:3000 --name github-actions-cicd alekhh/github-actions-cicd:latest
