@@ -62,4 +62,4 @@ jobs:
             sudo docker pull alekhh/github-actions-cicd:latest
             sudo docker stop github-actions-cicd || true
             sudo docker rm github-actions-cicd || true
-            sudo docker run -d -p 3000:3000 --name github-actions-cicd alekhh/github-actions-cicd:latest
+            sudo docker run -d -p 3000:3000 --name github-actions-cicd alekhh/github-actions-cicd:latest 
