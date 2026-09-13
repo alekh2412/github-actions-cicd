@@ -4,7 +4,7 @@ const app = express();
 
 app.get("/", (req, res) => {
     res.json({
-        message: "Hello, World!"
+        message: "version 4 -Automated Deployment!"
     });
 });
 
